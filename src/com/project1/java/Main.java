@@ -5,15 +5,17 @@ import java.util.Scanner;
 
 public class Main {
     static void game(){
+        String username;
+        String password;
+        Scanner input = new Scanner(System.in);
         // let's practice some more
         while (true) {
-            Scanner input = new Scanner(System.in);
             System.out.print("Input the username: ");
-            String username = input.next();
+            username = input.next();
             System.out.print("Input the password: ");
-            String password = input.next();
+            password = input.next();
             if (!username.equals(password)) {
-                System.out.println("Welcome! You are in!");
+                System.out.println("Welcome " + username + "! You are in!");
                 break;
             }
             System.out.println("Password and username must be different!");
@@ -25,24 +27,24 @@ public class Main {
         for (int i = 0; i < array.length; i ++){
             array[i] = ran.nextInt(100) + 1;
         }
-        Scanner input = new Scanner(System.in);
         boolean isSuccess = true;
         for (int i = 0; i < array.length-1; i ++){
             System.out.println("How much is: "+array[i]+" + "+array[i+1]);
             int result = input.nextInt();
             int real_result = array[i] + array[i+1];
             if (result != real_result){
-                System.out.println("You lose.. \n" +
+                System.out.println("You lose.." + username + "\n" +
                         "The result of "+array[i]+" + "+array[i+1]+ " is "+ real_result);
                 isSuccess = false;
                 break;
             }
         }
         if (!isSuccess){
-            System.out.println("You can't continue to play, because you lose.. sorry..");
+            System.out.println(username + " you can't continue to play, because you lose.. sorry..");
         }
         else {
             System.out.println("You complete all questions!! Congratulations!!!");
+            System.out.println("Good job " + username);
             int counter = 0;
             while (true) {
                 System.out.println("Ready for next game? yes/no");
@@ -53,10 +55,18 @@ public class Main {
                 }
                 counter++;
                 if (counter == 3){
-                    System.out.println("Ok I got it.. Sorry for being annoying.. That's all for today, thanks :)");
+                    System.out.println("Ok I got it.. Sorry for being annoying.." +
+                            " That's all for today, thanks " + username + " :)");
                     break;
                 }
             }
+            // check if remember the password
+            System.out.println("Checking your memory: Do you Remember your password?");
+            String pass_memo = input.next();
+            if (!pass_memo.equals(password)){
+                System.out.println("Not the correct one.. don't worry we continue to play :)");
+            }else
+                System.out.println(username + " you are AWESOME!!!!!!!!");
 
             // if success -> guessing game
 
@@ -75,9 +85,9 @@ public class Main {
 //        int sum = num1 + num2;
 //        System.out.println();
 //        System.out.println("Sum: "+sum);
+        Scanner input = new Scanner(System.in);
 
         while (true) {
-            Scanner input = new Scanner(System.in);
             System.out.println("Want to play a game? yes/no");
             String answer = input.next();
             if (answer.equals("yes")) {
