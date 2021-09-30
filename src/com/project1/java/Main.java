@@ -23,7 +23,7 @@ public class Main {
 
         // if log in -> math game
         Random ran = new Random();
-        int[] array = new int [6];
+        int[] array = new int [2];
         for (int i = 0; i < array.length; i ++){
             array[i] = ran.nextInt(100) + 1;
         }
@@ -70,6 +70,83 @@ public class Main {
 
             // if success -> guessing game
 
+            int guess = 0;
+            int num_of_guess = 0;
+            int guess_limit = 5;
+            boolean out_of_guess = false;
+            int num_to_guess = ran.nextInt(3) + 1;
+            System.out.println("Enter your guess: ");
+            guess = input.nextInt();
+
+            while ((guess != num_to_guess) && (!out_of_guess)){
+                if (num_of_guess < guess_limit){
+                    System.out.println("Enter your guess: ");
+                    guess = input.nextInt();
+                    num_of_guess += 1;
+                }else{
+                    out_of_guess = true;
+                    System.out.println("You lose.");
+                }
+            }
+            System.out.println("You won.");
+
+//            secret_word = "elor"
+//            guess = ""
+//            num_of_guess = 0
+//            guess_limit = 5
+//            out_of_guess = False
+//
+//            while guess != secret_word and not out_of_guess:
+//            if num_of_guess == 3:
+//            print("Take a hint -> its the name of the programmer")
+//            if num_of_guess < guess_limit:
+//            guess = input("Enter your guess: ")
+//            num_of_guess += 1
+//    else:
+//            out_of_guess = True
+//            if out_of_guess:
+//            print("Out of guesses, YOU LOSE!")
+//else:
+//            print("You Won!")
+
+            ////////////////////////
+//            System.out.println("You need to guess a number between 1-3," +
+//                    "\nThree times to win, you have 2 lives if you guess wrong.");
+//            int win_count = 0;
+//            int lives = 2;
+//            while (true){
+//                // int name = Random().nextInt(range) + minimum;
+//                int num = ran.nextInt(3) + 1;
+//                System.out.println("Enter your guess: ");
+//                int guess = input.nextInt();
+//                while (lives != 0){
+//                    if (num != guess){
+//                        lives -= 1;
+//                        System.out.println("Wrong guess " +username+ " 1 live off, reminds " +lives+ " lives");
+//                        System.out.println("Enter your guess: ");
+//                        guess = input.nextInt();
+//                    } else break;
+//                    if (lives == 0){
+//                        System.out.println("You lose, not you lucky day " +username+ " maybe next time..");
+//                        break;
+//                    }
+//                }
+////                if (num != guess){
+////                    lives -= 1;
+////                    if (lives == 0){
+////                        System.out.println("Not you lucky day " +username+ " maybe next time..");
+////                        break;
+////                    }
+////                    System.out.println("Wrong guess " +username+ " 1 live off, reminds " +lives+ " lives");
+////                }
+//                win_count ++;
+//                if (win_count == 3){
+//                    System.out.println("I must to tell you " + username +
+//                            " a long time I don't see such a lucky guy like you! YOU WON MY GAME!!!!!!");
+//                    System.out.println("And the winner is...........: " + username + "!!!!!!!!!!!!!!!!");
+//                    break;
+//                }
+//            }
         }
     }
 
@@ -92,7 +169,10 @@ public class Main {
             String answer = input.next();
             if (answer.equals("yes")) {
                 game();
-            }else break;
+            } else {
+                System.out.println("Ok, bye.");
+                break;
+            }
         }
     }
 }
